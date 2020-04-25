@@ -14,8 +14,7 @@ class AddUseridToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('user_id')->unique();
-            $table->string('role_name');
+            $table->integer('role_id');
         });
     }
 
