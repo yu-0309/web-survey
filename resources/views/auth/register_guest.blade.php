@@ -38,12 +38,7 @@
                     {!! Form::label('tel', '電話番号') !!}
                     {!! Form::text('tel', old('tel'), ['class' => 'form-control']) !!}
                 </div>
-
-                <div class="form-group">
-                    {!! Form::label('email', 'メールアドレス') !!}
-                    {!! Form::email('email', old('email'), ['class' => 'form-control']) !!}
-                </div>
-                
+ 
                 {!! Form::submit('登録する', ['class' => 'btn btn-primary btn-block']) !!}
             {!! Form::close() !!}
         </div>
