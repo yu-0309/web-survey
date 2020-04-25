@@ -7,8 +7,8 @@
 
             {!! Form::open(['route' => 'login.post']) !!}
                 <div class="form-group">
-                    {!! Form::label('user_id', 'ログインID') !!}
-                    {!! Form::text('user_id', old('user_id'), ['class' => 'form-control']) !!}
+                    {!! Form::label('name', 'ユーザ名') !!}
+                    {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group">

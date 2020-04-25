@@ -10,18 +10,13 @@
 
             {!! Form::open(['route' => 'signup.post']) !!}
                 <div class="form-group">
-                    {!! Form::label('role_name', '権限') !!}
-                    {!! Form::select('role_name', ['1' => '管理者','2' => '一般','3' => 'ゲスト'],'3') !!}
+                    {!! Form::label('role_id', '権限　') !!}
+                    {!! Form::select('role_id', ['1' => '管理者','2' => '一般','3' => 'ゲスト']) !!}
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('name', '表示名') !!}
+                    {!! Form::label('name', 'ユーザ名') !!}
                     {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('user_id', 'ID') !!}
-                    {!! Form::text('user_id', old('user_id'), ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group">
