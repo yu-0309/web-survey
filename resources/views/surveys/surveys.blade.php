@@ -1,6 +1,5 @@
-@extends('layouts.app')
-
-@section('content')
+<ul class="list-unstyled">
+    @foreach ($surveys as $survey)
         <li class="media mb-3">
             <div class="media-body">
                 <h2>調査一覧</h2>
@@ -39,4 +38,6 @@
                 
             </div>
         </li>
-@endsection
+    @endforeach
+</ul>
+{{ $microposts->links('pagination::bootstrap-4') }}

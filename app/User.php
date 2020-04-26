@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','role_id','name', 'password', 'tel', 'email',
+        'name','role_id', 'password', 'tel', 'email',
     ];
 
     /**
@@ -26,4 +26,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    public function surveys()
+    {
+        return $this->hasMany(Survey::class);
+    }
 }
