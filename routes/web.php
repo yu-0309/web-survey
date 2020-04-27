@@ -11,7 +11,10 @@
 |
 */
 
-Route::get('/', 'SurveysController@index'); //上書き
+
+Route::get('/', function () {
+    return view('welcome');
+});
 
 // ユーザ登録
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
@@ -29,4 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
     Route::resource('surveys', 'SurveysController');
     Route::resource('questionsheets', 'QuestionsheetsController');
+    Route::resource('answers', 'AnswersController');
+    Route::resource('maintenances', 'MaintenancesController');
+    Route::resource('roles', 'RolesController');
 });

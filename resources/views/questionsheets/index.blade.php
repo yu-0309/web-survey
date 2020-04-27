@@ -1,5 +1,5 @@
-@extends(‘layouts.app’)
-@section(‘content’)
+@extends('layouts.app')
+@section('content')
 <div class=”container”>
     <div class=”mt-2 row”>
         <table class=”table table-striped”>

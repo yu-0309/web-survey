@@ -1,42 +1,38 @@
 @extends('layouts.app')
 
 @section('content')
-        <li class="media mb-3">
-            <div class="media-body">
-                <h2>調査一覧</h2>
-                <table class="table table-striped">
-                    <tr>
-                        <th>項番</th>
-                        <th>調査名</th>
-                        <th>分類</th>
-                        <th>基準日</th>
-                        <th>メモ</th>
-                        <th>作成者</th>
-                        <th>作成日時</th>
-                        <th>更新日時</th>
-                        <th>メモ</th>
-                    </tr>
-                    <tr>
-                        <td>{{ $survey->id }}</td>
-                        <td>{{ $survey->name }}</td>
-                        <td>{{ $survey->team_id }}</td>
-                        <td>{{ $survey->reference_date }}</td>
-                        <td>{{ $survey->memo }}</td>
-                        <td>{{ $survey->user_id }}</td>
-                        <td>{{ $survey->created_at }}</td>
-                        <td>{{ $survey->updated_at }}</td>
-                        <td>{!! nl2br(e($survey->memo)) !!}</td>
-                    </tr>
-                </table>
-            
-                <div>
-                    @if (Auth::id() == $survey->user_id)
-                        {!! Form::open(['route' => ['surveys.destroy', $survey->id], 'method' => 'delete']) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
-                        {!! Form::close() !!}
-                    @endif
-                </div>                
-                
-            </div>
-        </li>
+    @if (Auth::check())
+    <div class="center jumbotron">
+        <div class="text-center">
+
+            <!-- 調査するへのリンク -->
+            {!! link_to_route('surveys.index', '　アンケートを設定する　', [], ['class' => 'btn btn-success btn-lg']) !!}<br><br>
+            {!! link_to_route('questionsheets.index', '　アンケートを回答する　', [], ['class' => 'btn btn-success btn-lg']) !!}<br><br>
+            {!! link_to_route('answers.index','　アンケートを集計する　', [], ['class' => 'btn btn-success btn-lg']) !!}<br><br>
+            {!! link_to_route('maintenances.index', '　　　　各種設定　　　　', [], ['class' => 'btn btn-success btn-lg']) !!}
+
+        </div>
+    </div>
+    @else
+        <div class="row">
+        <div class="col-sm-6 offset-sm-3"><br>
+
+            {!! Form::open(['route' => 'login.post']) !!}
+                <div class="form-group">
+                    {!! Form::label('name', 'ユーザ名') !!}
+                    {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('password', 'パスワード') !!}
+                    {!! Form::password('password', ['class' => 'form-control']) !!}
+                </div>
+
+                {!! Form::submit('ログインする', ['class' => 'btn btn-success btn-block']) !!}
+            {!! Form::close() !!}
+
+            <p class="mt-2">New user? {!! link_to_route('signup.get', 'Sign up now!') !!}</p>
+        </div>
+        </div>
+    @endif
 @endsection

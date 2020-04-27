@@ -14,10 +14,10 @@ class QuestionsheetsController extends Controller
      */
     public function index()
     {
-        $questionshees = Questionsheet::all();
+        $questionsheets = Questionsheet::all();
         
-        return view('questionseets.index', [
-            'questionseets' => $questionsheets,
+        return view('questionsheets.index', [
+            'questionsheets' => $questionsheets,
         ]);
     }
 
