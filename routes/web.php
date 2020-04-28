@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('surveys', 'SurveysController');
     Route::resource('questionsheets', 'QuestionsheetsController');
     Route::resource('answers', 'AnswersController');
+    Route::resource('teams', 'TeamsController');
     Route::resource('maintenances', 'MaintenancesController');
     Route::resource('roles', 'RolesController');
 });

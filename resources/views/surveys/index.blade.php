@@ -39,7 +39,7 @@
             </div>
             
             <div class='row justify-content-end'>
-                <a href='surveys.create' class=”btn btn-info”>新規作成</a>
+                <a href='surveys/create' class='btn btn-success'>新規作成</a>
             </div>
         </li>
 @endsection

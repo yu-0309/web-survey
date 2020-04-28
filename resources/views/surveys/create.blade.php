@@ -20,11 +20,10 @@
                         </div>
                        <div class="row">
                                 <div class="form-group col-5 text-right">
-                                    {!! Form::label('team_id', '担当:') !!}
+                                    {!! Form::label('team_name', '担当:') !!}
                                 </div>
                                 <div class="form-group col-5">
-                                    {!! Form::select('team_id', $teams, null, ['class' => 'form', 'id'=>'teams_id']) !!}
-<!--                                    {!! Form::text('team_id', old('reference_date'), ['class' => 'form-control']) !!}-->
+                                    {!! Form::select('team_id', $teams->pluck('name', 'id'), null, ['class' => 'form', 'id'=>'teams_id']) !!}
                                 </div>
                         </div>
                        <div class="row">
@@ -48,8 +47,9 @@
                                 <div class="form-group col-5">
                                     {!! Form::submit('登録', ['class' => 'btn btn-primary btn-sm form-control']) !!}
                                 </div>
+                                
                                 <div class="form-group col-5">
-                                    {!! Form::submit('戻る', ['class' => 'btn btn-primary btn-sm form-control']) !!}
+                                    <a href='/surveys' class='btn btn-primary btm-sm form-control'>戻る</a>
                                 </div>
                         </div>
                     </div>
