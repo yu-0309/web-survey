@@ -12,9 +12,7 @@
 */
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'SurveysController@index');
 
 // ユーザ登録
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
@@ -38,11 +36,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('roles', 'RolesController');
     Route::resource('answers', 'AnswersController');
     Route::resource('enterquestions', 'EnterQuestionsController');
-    Route::resource('enterusers', 'EnterUsersController');
+    Route::resource('surveyusers', 'SurveyUsersController');
     Route::resource('questions', 'QuestionsController');
     Route::resource('results', 'ResultsController');
     Route::resource('surveyareas', 'SurveyAreasController');
     Route::resource('surveypoints', 'SurveyPointsController');
     Route::resource('surveyprefectures', 'SurveyPrefecturesController');
     Route::resource('teams', 'TeamsController');
+    Route::post('surveys/delete','SurveysController@delete')->name('surveys.delete');
 });

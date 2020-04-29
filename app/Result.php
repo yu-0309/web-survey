@@ -12,4 +12,15 @@ class Result extends Model
     {
         return $this->belongsTo(EnterQuestion::class);
     }
+    
+    public function question()
+    {
+        return $this->belongsTo(Question::class);
+    }
+
+    public function answer()
+    {
+        return $this->belongsTo(Answer::class);
+    }
+
 }

@@ -18,9 +18,9 @@ class Survey extends Model
         return $this->hasMany(SurveyPrefecture::class);
     }
 
-    public function questionsheet()
+    public function questionsheets()
     {
-        return $this->belongsTo(Questionsheet::class);
+        return $this->hasMany(Questionsheet::class);
     }
     
     public function team()

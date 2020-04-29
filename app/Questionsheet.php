@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Questionsheet extends Model
 {
-    protected $fillable = ['survey_id','date','term_id','total_flag','memo'];
+    protected $fillable = ['survey_id','survey_date','term_id','total_flag','memo'];
 
     public function survey()
     {

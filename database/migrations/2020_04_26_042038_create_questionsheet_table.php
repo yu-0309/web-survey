@@ -16,11 +16,12 @@ class CreateQuestionsheetTable extends Migration
         Schema::create('questionsheets', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('survey_id')->unsigned()->index();
-            $table->string('date');
+            $table->string('survey_date');
             $table->integer('term_id');
             $table->integer('total_flag');
             $table->string('memo');
             $table->timestamps();
+            
         });
     }
 

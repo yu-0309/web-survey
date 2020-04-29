@@ -17,7 +17,7 @@ class CreateSurveysTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
             $table->string('name');
-            $table->integer('team_id');
+            $table->integer('team_id')->unsigned()->index();
             $table->string('reference_date');
             $table->string('memo');
             $table->timestamps();

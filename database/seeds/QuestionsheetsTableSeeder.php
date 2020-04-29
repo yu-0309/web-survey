@@ -16,7 +16,7 @@ class QuestionsheetsTableSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         DB::table('questionsheets')->insert([ [
             'survey_id'=>'1',
-            'date'=>'20200501',
+            'survey_date'=>'20200501',
             'term_id'=>'2',
             'total_flag'=>'1',
             'memo'=>'test'

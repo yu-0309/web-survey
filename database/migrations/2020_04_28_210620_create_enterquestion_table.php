@@ -15,9 +15,8 @@ class CreateEnterquestionTable extends Migration
     {
         Schema::create('enterquestions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('enterquestion_id')->unsigned()->index();
-            $table->integer('question_id')->unsigned()->index();
-            $table->integer('answer_id')->unsigned()->index();
+            $table->integer('surveyuser_id')->unsigned()->index();
+            $table->integer('questionsheet_id')->unsigned()->index();
             $table->timestamps();
         });
     }

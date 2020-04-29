@@ -11,10 +11,10 @@ class SurveysController extends Controller
 {
     public function index()
     {
-        $surveys = Survey::all();
+        $survey = Survey::all();
         
         return view('surveys.index', [
-            'surveys' => $surveys,
+            'survey' => $survey,
         ]);
     }
     
@@ -28,7 +28,7 @@ class SurveysController extends Controller
     }
     
     
-    public function store(Request $request)
+    public function store(Survey $Survey)
     {
         $this->validate($request, [
             'name' => 'required|max:30',
@@ -46,15 +46,70 @@ class SurveysController extends Controller
 
         return redirect('/surveys');
     }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Questionsheet  $questionsheet
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Survey $survey)
+    {
+        //
+    }
+
+
+    public function edit($id)
+    {
+        $survey = Survey::find($id);
+        $teams = Team::all();
+
+        if (\Auth::id() === $survey->user_id) { //これを外せばだれでも編集できてしまう
+            return view('surveys.edit',[
+                'survey' => $survey,
+                'teams' => $teams,
+            ]);
+        }                                       //これを外せばだれでも編集できてしまう
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:30',
+            'team_id' => 'required|max:5',
+            'reference_date' => 'required|max:8',
+            'memo' => 'required|max:50',
+        ]);
+
+        $survey = Survey::find($id);
+
+//        if (\Auth::id() === $survey->user_id) { //これを外せばだれでも削除できてしまう
+            $survey->name = $request->name;
+            $survey->team_id = $request->team_id;
+            $survey->reference_date = $request->reference_date;
+            $survey->memo = $request->memo;
+            $survey->save();
+//        }                                       //これを外せばだれでも削除できてしまう
+
+        return redirect('/surveys');
+    }
+
     public function destroy($id)
     {
-        $survey = \App\Survey::find($id);
+        $survey = Survey::find($id);
 
         if (\Auth::id() === $survey->user_id) { //これを外せばだれでも削除できてしまう
             $survey->delete();
         }                                       //これを外せばだれでも削除できてしまう
 
-        return back();
+        return redirect('/surveys');
     }
     
+    public function delete(Request $request){
+
+        $request->ids->delete();
+        
+        return redirect('/surveys');
+    }
 }

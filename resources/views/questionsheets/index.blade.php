@@ -1,8 +1,19 @@
 @extends('layouts.app')
+
 @section('content')
-<div class=”container”>
-    <div class=”mt-2 row”>
-        <table class=”table table-striped”>
+
+<div class='row justify-content-start'>
+    <a href='questionsheets/create' class='btn btn-success'>　新規作成　</a>
+</div><br>
+
+<div class='row justify-content-start'>
+    <a href='/surveys' class='btn btn-success'>戻る</a>
+</div><br>
+
+<li class="media mb-4">
+    <div class="media-body">
+        <h2>アンケート一覧</h2>
+            <table class="table table-striped">
             <thead>
                 <tr class=”table-info”>
                     <th scope=”col”>アンケートID</th>
@@ -16,16 +27,16 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach ($surveys as $survey)
+            @foreach ($questionsheets as $questionsheet)
                 <tr>
-                    <td>{{ $survey->id}}</td>
-                    <td>{{ $survey->survey_id}}</td>
-                    <td>{{ $survey->date }}</td>
-                    <td>{{ $survey->term_id }}</td>
-                    <td>{{ $survey->total_flag }}</td>
-                    <td>{{ $survey->memo }}</td>
-                    <td>{{ $survey->created_at }}</td>
-                    <td>{{ $survey->updated_at }}</td>
+                    <td>{{ $questionsheet->id}}</td>
+                    <td>{{ $questionsheet->survey_id}}</td>
+                    <td>{{ $questionsheet->survey_date }}</td>
+                    <td>{{ $questionsheet->term_id }}</td>
+                    <td>{{ $questionsheet->total_flag }}</td>
+                    <td>{{ $questionsheet->memo }}</td>
+                    <td>{{ $questionsheet->created_at }}</td>
+                    <td>{{ $questionsheet->updated_at }}</td>
                 </tr>
             @endforeach
             </tbody>

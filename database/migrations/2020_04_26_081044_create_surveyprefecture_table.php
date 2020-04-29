@@ -18,6 +18,9 @@ class CreateSurveyprefectureTable extends Migration
             $table->integer('survey_id')->unsigned()->index();
             $table->string('name');
             $table->timestamps();
+
+            //外部キー参照
+            $table->foreign('survey_id')->references('id')->on('surveys');
         });
     }
 

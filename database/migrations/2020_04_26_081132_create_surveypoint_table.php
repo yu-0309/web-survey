@@ -19,6 +19,9 @@ class CreateSurveypointTable extends Migration
             $table->string('name');
             $table->string('address');
             $table->timestamps();
+            
+            //外部キー参照
+            $table->foreign('surveyarea_id')->references('id')->on('surveyareas');
         });
     }
 
