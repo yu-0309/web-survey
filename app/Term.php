@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class Term extends Model
 {
     protected $fillable = ['name'];
 
-    public function users()
+    public function questionsheets()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(Questionsheet::class);
     }
 }

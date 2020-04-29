@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="text-center">
-        <h1>ユーザ登録画面</h1>
+        <h1>ユーザ登録画面</h1><br>
     </div>
 
     <div class="row">
@@ -31,12 +31,11 @@
 
                 <div class="form-group">
                     {!! Form::label('tel', '電話番号') !!}
-                    {!! Form::text('tel', old('tel'), ['class' => 'form-control']) !!}
+                    {!! Form::text('tel', old('tel') , ['placeholder' => '09012345678','class' => 'form-control']) !!}
                 </div>
-
                 <div class="form-group">
                     {!! Form::label('email', 'メールアドレス') !!}
-                    {!! Form::email('email', old('email'), ['class' => 'form-control']) !!}
+                    {!! Form::email('email', old('email'), ['placeholder' => 'example@abc.com','class' => 'form-control']) !!}
                 </div>
                 
                 {!! Form::submit('登録する', ['class' => 'btn btn-primary btn-block']) !!}

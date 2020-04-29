@@ -17,7 +17,7 @@ class CreateQuestionTable extends Migration
             $table->increments('id');
             $table->integer('questionsheet_id')->unsigned()->index();
             $table->string('content');
-            $table->string('fix_flag');
+            $table->integer('fix_flag');
             $table->timestamps();
         });
     }

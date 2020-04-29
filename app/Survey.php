@@ -8,13 +8,23 @@ class Survey extends Model
 {
     protected $fillable = ['user_id','name','team_id','reference_date','memo'];
 
-    public function user()
+    public function surveyuser()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(SurveyUser::class);
+    }
+
+    public function surveyprefectures()
+    {
+        return $this->hasMany(SurveyPrefecture::class);
     }
 
     public function questionsheet()
     {
         return $this->belongsTo(Questionsheet::class);
+    }
+    
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
     }
 }

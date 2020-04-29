@@ -36,4 +36,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('teams', 'TeamsController');
     Route::resource('maintenances', 'MaintenancesController');
     Route::resource('roles', 'RolesController');
+    Route::resource('answers', 'AnswersController');
+    Route::resource('enterquestions', 'EnterQuestionsController');
+    Route::resource('enterusers', 'EnterUsersController');
+    Route::resource('questions', 'QuestionsController');
+    Route::resource('results', 'ResultsController');
+    Route::resource('surveyareas', 'SurveyAreasController');
+    Route::resource('surveypoints', 'SurveyPointsController');
+    Route::resource('surveyprefectures', 'SurveyPrefecturesController');
+    Route::resource('teams', 'TeamsController');
 });

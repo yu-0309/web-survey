@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateResultTable extends Migration
+class CreateEnterquestionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateResultTable extends Migration
      */
     public function up()
     {
-        Schema::create('results', function (Blueprint $table) {
+        Schema::create('enterquestions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('enterquestion_id')->unsigned()->index();
             $table->integer('question_id')->unsigned()->index();
@@ -29,6 +29,6 @@ class CreateResultTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('results');
+        Schema::dropIfExists('enterquestions');
     }
 }

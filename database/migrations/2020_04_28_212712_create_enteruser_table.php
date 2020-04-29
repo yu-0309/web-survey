@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEntererTable extends Migration
+class CreateEnteruserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreateEntererTable extends Migration
      */
     public function up()
     {
-        Schema::create('enterers', function (Blueprint $table) {
+        Schema::create('enterusers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('surveypoint_id')->unsigned()->index();
-            $table->integer('questionsheet_id')->unsigned()->index();
+            $table->string('name')->unique();
+            $table->string('password');
+            $table->integer('role_id');
+            $table->string('tel')->unique();
+            $table->string('email')->unique();
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ class CreateEntererTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('enterers');
+        Schema::dropIfExists('enterusers');
     }
 }

@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section ('content')
+
+        <div class='row justify-content-start'>
+            <a href='surveys/create' class='btn btn-success'>　新規作成　</a>
+        </div><br>
+
         <li class="media mb-3">
             <div class="media-body">
                 <h2>調査情報一覧</h2>
@@ -36,10 +41,6 @@
                         @endforeach
                     </tbody>
                 </table>
-            </div>
-            
-            <div class='row justify-content-end'>
-                <a href='surveys/create' class='btn btn-success'>新規作成</a>
             </div>
         </li>
 @endsection

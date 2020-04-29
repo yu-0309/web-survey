@@ -20,20 +20,6 @@ class SurveysController extends Controller
     
     public function create()
     {
-//        $this->validate($request, [
-//           'name' => 'required|max:30',
-//            'team_id' => 'required|max:5',
-//            'reference_date' => 'required|max:10',
-//            'memo' => 'required|max:50',
-//        ]);
-
-//        $request->user()->surveys()->create([
-//            'name' => $name,
-//            'team_id' => $team_id,
-//            'reference_date' => $reference_date,
-//            'memo' => $memo,
-//        ]);
-
         $teams = Team::all();
 
         return view('surveys.create',[
@@ -47,7 +33,7 @@ class SurveysController extends Controller
         $this->validate($request, [
             'name' => 'required|max:30',
             'team_id' => 'required|max:5',
-            'reference_date' => 'required|max:10',
+            'reference_date' => 'required|max:8',
             'memo' => 'required|max:50',
         ]);
 

@@ -12,4 +12,10 @@ class Questionsheet extends Model
     {
         return $this->belongsTo(Survey::class);
     }
+    
+    public function term()
+    {
+        return $this->belongsTo(Term::class);
+    }
+
 }

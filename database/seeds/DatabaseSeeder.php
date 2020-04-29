@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             QuestionsheetsTableSeeder::class,
             RolesTableSeeder::class,
             TeamsTableSeeder::class,
+            TermsTableSeeder::class,
         ]);
     }
 }

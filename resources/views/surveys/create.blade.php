@@ -7,12 +7,12 @@
             <div class="col-8">
                 <div class="card">
                     <div class="card-header alert-danger">
-                        新規
+                        新規登録画面　*は入力必須項目
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="form-group col-5 text-right">
-                                {!! Form::label('name', '調査情報名:') !!}
+                                {!! Form::label('name', '調査情報名*') !!}
                             </div>
                             <div class="form-group col-5">
                                 {!! Form::text('name', old('name'), ['maxlength'=>30,'class' => 'form-control']) !!}
@@ -20,23 +20,23 @@
                         </div>
                        <div class="row">
                                 <div class="form-group col-5 text-right">
-                                    {!! Form::label('team_name', '担当:') !!}
+                                    {!! Form::label('team_name', '担当*') !!}
                                 </div>
                                 <div class="form-group col-5">
-                                    {!! Form::select('team_id', $teams->pluck('name', 'id'), null, ['class' => 'form', 'id'=>'teams_id']) !!}
+                                    {!! Form::select('team_id', $teams->pluck('name', 'id'), '', ['placeholder' => '選択してください　',], ['class' => 'form', 'id'=>'teams_id']) !!}
                                 </div>
                         </div>
                        <div class="row">
                                 <div class="form-group col-5 text-right">
-                                    {!! Form::label('reference_date', '基準日:') !!}
+                                    {!! Form::label('reference_date', '基準日*') !!}
                                 </div>
                                 <div class="form-group col-5">
-                                    {!! Form::text('reference_date', old('reference_date'), ['class' => 'form-control']) !!}
+                                    {!! Form::text('reference_date', old('reference_date'), ["placeholder"=>"YYYYMMDD"],['class' => 'form-control']) !!}
                                 </div>
                         </div>
                         <div class="row">
                                 <div class="form-group col-5 text-right">
-                                    {!! Form::label('memo', 'メモ:') !!}
+                                    {!! Form::label('memo', 'メモ') !!}
                                 </div>
                                 <div class="form-group col-5">
                                     {!! Form::text('memo', old('memo'), ['maxlength'=>50,'class' => 'form-control']) !!}

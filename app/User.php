@@ -31,4 +31,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Survey::class);
     }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
 }
