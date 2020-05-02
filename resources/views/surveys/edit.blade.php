@@ -7,7 +7,7 @@
             <div class="col-8">
                 <div class="card">
                     <div class="card-header alert-danger">
-                        調査情報　編集画面　*は入力必須項目
+                        調査情報　編集画面　（*は入力必須項目）
                     </div>
                     <div class="card-body">
                         <div class="row">

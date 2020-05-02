@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+use Carbon\Carbon;
+
 class QuestionsheetsTableSeeder extends Seeder
 {
     /**
@@ -19,7 +21,9 @@ class QuestionsheetsTableSeeder extends Seeder
             'survey_date'=>'20200501',
             'term_id'=>'2',
             'total_flag'=>'1',
-            'memo'=>'test'
+            'memo'=>'test',
+            'created_at'=>Carbon::now(),
+            'updated_at'=>Carbon::now()
             ]
         ]);
     }

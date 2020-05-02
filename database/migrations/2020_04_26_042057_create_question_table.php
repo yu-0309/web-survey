@@ -16,8 +16,17 @@ class CreateQuestionTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('questionsheet_id')->unsigned()->index();
-            $table->string('content');
-            $table->integer('fix_flag');
+            $table->string('questioncontent');
+            $table->string('answercontent1');
+            $table->string('answercontent2');
+            $table->string('answercontent3');
+            $table->string('answercontent4');
+            $table->string('answercontent5');
+            $table->string('answercontent6');
+            $table->string('answercontent7');
+            $table->string('answercontent8');
+            $table->string('answercontent9');
+            $table->string('answercontent10');
             $table->timestamps();
         });
     }

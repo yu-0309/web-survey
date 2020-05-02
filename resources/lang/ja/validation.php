@@ -154,6 +154,15 @@ return [
       |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name'=>'名前',
+        'password'=>'パスワード',
+        'tel'=>'電話番号',
+        'team_id'=>'担当名',
+        'reference_date'=>'基準日',
+        'survey_date'=>'調査日',
+        'term_id'=>'分類',
+        'memo'=>'メモ',
+    ],
 
 ];

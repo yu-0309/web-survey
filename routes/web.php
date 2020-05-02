@@ -12,7 +12,9 @@
 */
 
 
-Route::get('/', 'SurveysController@index');
+Route::get('/', function(){
+    return view('welcome');
+});
 
 // ユーザ登録
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');

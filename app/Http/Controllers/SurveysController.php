@@ -11,10 +11,10 @@ class SurveysController extends Controller
 {
     public function index()
     {
-        $survey = Survey::all();
-        
+        $surveys = Survey::all();
+
         return view('surveys.index', [
-            'survey' => $survey,
+            'surveys' => $surveys,
         ]);
     }
     
@@ -28,13 +28,13 @@ class SurveysController extends Controller
     }
     
     
-    public function store(Survey $Survey)
+    public function store(Request $request)
     {
         $this->validate($request, [
             'name' => 'required|max:30',
             'team_id' => 'required|max:5',
             'reference_date' => 'required|max:8',
-            'memo' => 'required|max:50',
+            'memo' => 'max:50',
         ]);
 
         $request->user()->surveys()->create([
@@ -71,6 +71,7 @@ class SurveysController extends Controller
                 'teams' => $teams,
             ]);
         }                                       //これを外せばだれでも編集できてしまう
+        return redirect('/surveys');        
     }
 
     public function update(Request $request, $id)
@@ -105,11 +106,11 @@ class SurveysController extends Controller
 
         return redirect('/surveys');
     }
-    
-    public function delete(Request $request){
 
-        $request->ids->delete();
+//    public function delete(Request $request){
+
+//        $request->ids->delete();
         
-        return redirect('/surveys');
-    }
+//       return redirect('/surveys');
+//    }
 }
