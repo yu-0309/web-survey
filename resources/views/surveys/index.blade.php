@@ -2,18 +2,15 @@
 
 @section ('content')
 
-<div class='row justify-content-start'>
+<div class='justify-content-around'>
     <a href='surveys/create' class='btn btn-success'>　新規作成　</a>
-</div><br>
-    
-<div class='row justify-content-start'>
     <a href='/' class='btn btn-success'>トップページへ戻る</a>
 </div><br>
 
 <li class="media mb-4">
     <div class="alt-table-responsive">
         <h2>調査情報一覧</h2>
-            <table class="table table-striped text-center">
+            <table class="table table-striped table-responsive table-bordered text-center">
             <thead>
             <tr>
 <!--            <th>項番</th>    -->
@@ -27,8 +24,8 @@
                 <th>アンケート</th>
                 <th>調査地点</th>
                 <th>調査担当者</th>
-                <th></th>
-                <th></th>
+                <th>修正</th>
+                <th>削除</th>
             </tr>
             </thead>
             <tbody>

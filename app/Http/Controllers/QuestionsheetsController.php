@@ -64,7 +64,7 @@ class QuestionsheetsController extends Controller
 
         dd($request);
 
-        return back();
+        return redirect('/questionsheets');
     }
 
     /**
@@ -84,9 +84,17 @@ class QuestionsheetsController extends Controller
      * @param  \App\Questionsheet  $questionsheet
      * @return \Illuminate\Http\Response
      */
-    public function edit(Questionsheet $questionsheet)
+    public function edit($id)
     {
-        //
+        $questionsheet = Questionsheet::find($id);
+        $terms = Term::all();
+
+        return view('questionsheets.edit',[
+            'questionsheet' => $questionsheet,
+            'terms' => $terms,
+            ]);
+
+        return redirect('/questionsheets');        
     }
 
     /**
@@ -96,9 +104,24 @@ class QuestionsheetsController extends Controller
      * @param  \App\Questionsheet  $questionsheet
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Questionsheet $questionsheet)
+    public function update(Request $request, $id)
     {
-        //
+         $this->validate($request, [
+            'survey_date' => 'required|max:8',
+            'term_id' => 'required|max:5',
+            'total_flag' => 'required|max:5',
+            'memo' => 'required|max:50',
+        ]);
+
+        $questionsheet = Questionsheet::find($id);
+
+        $questionsheet->survey_date = $request->survey_date;
+        $questionsheet->term_id = $request->term_id;
+        $questionsheet->total_flag = $request->total_flag;
+        $questionsheet->memo = $request->memo;
+        $questionsheet->save();
+
+        return redirect('/questionsheets');
     }
 
     /**
@@ -107,8 +130,12 @@ class QuestionsheetsController extends Controller
      * @param  \App\Questionsheet  $questionsheet
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Questionsheet $questionsheet)
+    public function destroy($id)
     {
-        //
+        $questionsheet = Questionsheet::find($id);
+
+        $questionsheet->delete();
+
+        return redirect('/questionsheets');
     }
 }

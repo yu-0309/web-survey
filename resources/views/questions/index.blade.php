@@ -1,18 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<td>
-    {!! link_to_route('questionsheets.index', '戻る', [], ['class' => 'btn btn-success']) !!}<br><br>
-</td>
 
-<td>
-    {!! link_to_route('questions.create', '項目追加', [], ['class' => 'btn btn-success']) !!}<br><br>
-</td>
+<div class='justify-content-around'>
+    {!! link_to_route('questionsheets.index', '戻る', [], ['class' => 'btn btn-success']) !!}
+    {!! link_to_route('questions.create', '項目追加', [], ['class' => 'btn btn-success']) !!}
+</div><br>
 
 <li class="media mb-4">
     <div class="media-body">
         <h2>アンケート項目</h2><br>
-            <table class="table table-striped">
+            <table class="table table-striped table-bordered text-center">
             <thead>
                 <tr class=”table-info”>
                     <th class="col-ms-1">質問ID</th>
@@ -27,8 +25,10 @@
                     <th scope=”col”>選択肢８</th>
                     <th scope=”col”>選択肢９</th>
                     <th scope=”col”>選択肢１０</th>
-                    <th></th>
-                    <th></th>
+                    <th scope=”col”>選択肢１１</th>
+                    <th scope=”col”>選択肢１２</th>
+                    <th>修正</th>
+                    <th>削除</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,6 +46,11 @@
                     <td>{{ $question->answercontent8 }}</td>
                     <td>{{ $question->answercontent9 }}</td>
                     <td>{{ $question->answercontent10 }}</td>
+                    <td>{{ $question->answercontent11}}</td>
+                    <td>{{ $question->answercontent12 }}</td>
+                <td>
+                    {!! link_to_route('questions.edit', '修正', ['id' => $question->id], ['class' => 'btn btn-primary btn-sm']) !!}
+                </td>
                 <td>
                     {!! Form::model($question, ['route' => ['questions.destroy', $question->id], 'method' => 'delete']) !!}
                     {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}

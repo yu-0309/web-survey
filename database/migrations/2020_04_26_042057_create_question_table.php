@@ -27,6 +27,8 @@ class CreateQuestionTable extends Migration
             $table->string('answercontent8');
             $table->string('answercontent9');
             $table->string('answercontent10');
+            $table->string('answercontent11');
+            $table->string('answercontent12');
             $table->timestamps();
         });
     }

@@ -56,6 +56,8 @@ class QuestionsController extends Controller
             'answercontent8' => 'max:30',
             'answercontent9' => 'max:30',
             'answercontent10' => 'max:30',
+            'answercontent11' => 'max:30',
+            'answercontent12' => 'max:30',
         ]);
 
         $request->user()->questions()->create([
@@ -70,6 +72,8 @@ class QuestionsController extends Controller
             'answercontent8' => $request->answercontent8,
             'answercontent9' => $request->answercontent9,
             'answercontent10' => $request->answercontent10,
+            'answercontent11' => $request->answercontent11,
+            'answercontent12' => $request->answercontent12,
         ]);
 
         return redirect('/questions');
@@ -94,7 +98,13 @@ class QuestionsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $question = Question::find($id);
+        
+         return view('questions.edit',[
+             'question' => $question,
+        ]);
+
+        return redirect('/questions');        
     }
 
     /**
@@ -106,7 +116,40 @@ class QuestionsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'questioncontent' => 'required|max:30',
+            'answercontent1' => 'required|max:30',
+            'answercontent2' => 'required|max:30',
+            'answercontent3' => 'max:30',
+            'answercontent4' => 'max:30',
+            'answercontent5' => 'max:30',
+            'answercontent6' => 'max:30',
+            'answercontent7' => 'max:30',
+            'answercontent8' => 'max:30',
+            'answercontent9' => 'max:30',
+            'answercontent10' => 'max:30',
+            'answercontent11' => 'max:30',
+            'answercontent12' => 'max:30',
+        ]);
+
+        $question = Question::find($id);
+
+        $question->questioncontent = $request->questioncontent;
+        $question->answercontent1 = $request->answercontent1;
+        $question->answercontent2 = $request->answercontent2;
+        $question->answercontent3 = $request->answercontent3;
+        $question->answercontent4 = $request->answercontent4;
+        $question->answercontent5 = $request->answercontent5;
+        $question->answercontent6 = $request->answercontent6;
+        $question->answercontent7 = $request->answercontent7;
+        $question->answercontent8 = $request->answercontent8;
+        $question->answercontent9 = $request->answercontent9;
+        $question->answercontent10 = $request->answercontent10;
+        $question->answercontent11 = $request->answercontent11;
+        $question->answercontent12 = $request->answercontent12;
+        $question->save();
+
+        return redirect('/questions');
     }
 
     /**
@@ -117,6 +160,10 @@ class QuestionsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $question = Question::find($id);
+
+        $question->delete();
+
+        return redirect('/questions');
     }
 }

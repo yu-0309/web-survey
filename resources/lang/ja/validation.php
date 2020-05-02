@@ -163,6 +163,9 @@ return [
         'survey_date'=>'調査日',
         'term_id'=>'分類',
         'memo'=>'メモ',
+        'questioncontent'=>'質問項目',
+        'answercontent1'=>'選択肢１',
+        'answercontent2'=>'選択肢２',
     ],
 
 ];

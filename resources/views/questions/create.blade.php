@@ -98,6 +98,22 @@
                                     {!! Form::text('answercontent10', old('answercontent10'), ['maxlength'=>50,'class' => 'form-control']) !!}
                                 </div>
                         </div>
+                        <div class="row">
+                                <div class="form-group col-5 text-right">
+                                    {!! Form::label('answercontent11', '選択肢１１') !!}
+                                </div>
+                                <div class="form-group col-5">
+                                    {!! Form::text('answercontent11', old('answercontent11'), ['maxlength'=>50,'class' => 'form-control']) !!}
+                                </div>
+                        </div>
+                        <div class="row">
+                                <div class="form-group col-5 text-right">
+                                    {!! Form::label('answercontent12', '選択肢１２') !!}
+                                </div>
+                                <div class="form-group col-5">
+                                    {!! Form::text('answercontent12', old('answercontent12'), ['maxlength'=>50,'class' => 'form-control']) !!}
+                                </div>
+                        </div>
 
                         <div class = "row">
                                 <div class="form-group col-5">

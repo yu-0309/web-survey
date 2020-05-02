@@ -18,8 +18,8 @@ class SurveysTableSeeder extends Seeder
         DB::table('surveys')->insert([ [
             'name'=>'熊本知事選',
             'user_id'=>'43',
-            'team_id'=>'43',
-            'reference_date'=>'0501',
+            'team_id'=>'45',
+            'reference_date'=>'20200315',
             'memo'=>'テスト',
             'created_at'=>Carbon::now(),
             'updated_at'=>Carbon::now()
@@ -27,8 +27,17 @@ class SurveysTableSeeder extends Seeder
         DB::table('surveys')->insert([ [
             'name'=>'東京都知事選',
             'user_id'=>'13',
-            'team_id'=>'13',
-            'reference_date'=>'0701',
+            'team_id'=>'14',
+            'reference_date'=>'20200720',
+            'memo'=>'テスト',
+            'created_at'=>Carbon::now(),
+            'updated_at'=>Carbon::now()
+        ]]);
+        DB::table('surveys')->insert([ [
+            'name'=>'網走市長選',
+            'user_id'=>'1',
+            'team_id'=>'2',
+            'reference_date'=>'20201210',
             'memo'=>'テスト',
             'created_at'=>Carbon::now(),
             'updated_at'=>Carbon::now()
