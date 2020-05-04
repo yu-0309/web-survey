@@ -8,6 +8,7 @@ use App\User;
 use App\Survey;
 use App\Questionsheet;
 use App\Term;
+use App\Total;
 
 class QuestionsheetsController extends Controller
 {
@@ -16,6 +17,18 @@ class QuestionsheetsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function index(Request $request,$id)
+    {
+        $survey = Survey::find($id);
+            //dd($survey);
+        $questionsheets = $survey->questionsheets()->get();
+
+        return view('questionsheets.index', [
+            'questionsheets' => $questionsheets,
+            'survey' => $survey,
+        ]);
+    }
+    /*
     public function index()
     {
         $questionsheets = Questionsheet::all();
@@ -24,20 +37,41 @@ class QuestionsheetsController extends Controller
             'questionsheets' => $questionsheets,
         ]);
     }
-
+    */
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function create(Request $request,$id)
+    {
+        $terms = Term::all();
+        $totals = Total::all();
+
+        $survey = Survey::find($id);
+        $questionsheets = $survey->questionsheets()->get();
+
+        return view('questionsheets.create',[
+            'questionsheets' => $questionsheets,
+            'survey' => $survey,
+            'terms' => $terms,
+            'totals' => $totals,
+        ]);
+    }
+
+
+    /*
     public function create()
     {
         $terms = Term::all();
+        $totals = Total::all();
 
         return view('questionsheets.create',[
-            'terms' => $terms,
+            'terms' => $terms,'totals' => $totals,
         ]);
     }
+    */
 
     /**
      * Store a newly created resource in storage.
@@ -45,20 +79,39 @@ class QuestionsheetsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+     
+
+    public function store(Request $request,$id)
+    {
+        $terms = Term::all();
+        $totals = Total::all();
+
+        $survey = Survey::find($id);
+
+        $request->$survey->questionsheets()->create([
+            'survey_date' => $request->survey_date,
+            'term_id' => $request->term_id,
+            'total_id' => $request->total_id,
+            'memo' => $request->memo,
+        ]);        
+        return redirect('/questionsheets');
+    }
+     
+     /*
     public function store(Request $request)
     {
 
         $this->validate($request, [
             'survey_date' => 'required|max:8',
             'term_id' => 'required|max:5',
-            'total_flag' => 'required|max:5',
+            'total_id' => 'required|max:5',
             'memo' => 'required|max:50',
         ]);
 
         $request->questionsheets()->create([
             'survey_date' => $request->survey_date,
             'term_id' => $request->term_id,
-            'total_flag' => $request->total_flag,
+            'total_id' => $request->total_id,
             'memo' => $request->memo,
         ]);
 
@@ -66,6 +119,7 @@ class QuestionsheetsController extends Controller
 
         return redirect('/questionsheets');
     }
+    */
 
     /**
      * Display the specified resource.
@@ -88,10 +142,12 @@ class QuestionsheetsController extends Controller
     {
         $questionsheet = Questionsheet::find($id);
         $terms = Term::all();
+        $totals = Total::all();
 
         return view('questionsheets.edit',[
             'questionsheet' => $questionsheet,
             'terms' => $terms,
+            'totals' => $totals,
             ]);
 
         return redirect('/questionsheets');        
@@ -109,7 +165,7 @@ class QuestionsheetsController extends Controller
          $this->validate($request, [
             'survey_date' => 'required|max:8',
             'term_id' => 'required|max:5',
-            'total_flag' => 'required|max:5',
+            'total_id' => 'required|max:5',
             'memo' => 'required|max:50',
         ]);
 
@@ -117,7 +173,7 @@ class QuestionsheetsController extends Controller
 
         $questionsheet->survey_date = $request->survey_date;
         $questionsheet->term_id = $request->term_id;
-        $questionsheet->total_flag = $request->total_flag;
+        $questionsheet->total_id = $request->total_id;
         $questionsheet->memo = $request->memo;
         $questionsheet->save();
 

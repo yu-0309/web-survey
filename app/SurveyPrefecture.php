@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SurveyPrefecture extends Model
 {
+//    protected $table = 'surveyprefectures';
     protected $fillable = ['survey_id','name'];
 
     public function survey()
@@ -15,6 +16,6 @@ class SurveyPrefecture extends Model
 
     public function surveyareas()
     {
-        return $this->hasMany(Questionsheet::class);
+        return $this->hasMany(SurveyArea::class);
     }
 }

@@ -8,7 +8,7 @@ class Survey extends Model
 {
     protected $fillable = ['user_id','name','team_id','reference_date','memo'];
 
-    public function surveyuser()
+    public function surveyusers()
     {
         return $this->hasMany(SurveyUser::class);
     }
@@ -18,9 +18,14 @@ class Survey extends Model
         return $this->hasMany(SurveyPrefecture::class);
     }
 
-    public function questionsheets()
+    public function surveyunits()
     {
-        return $this->hasMany(Questionsheet::class);
+        return $this->hasMany(SurveyUnit::class);
+    }
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
     }
 
     public function user()

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQuestionsheetTable extends Migration
+class CreateSurveyunitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,17 @@ class CreateQuestionsheetTable extends Migration
      */
     public function up()
     {
-        Schema::create('questionsheets', function (Blueprint $table) {
+        Schema::create('survey_units', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('survey_id')->unsigned()->index();
             $table->string('survey_date');
-            $table->integer('term_id');
-            $table->integer('total_flag');
+            $table->integer('term_id')->unsigned()->index();
+            $table->integer('total_id')->unsigned()->index();
             $table->string('memo');
             $table->timestamps();
             
+            // 外部キー制約
+            $table->foreign('survey_id')->references('id')->on('surveys')->onDelete('cascade');
         });
     }
 
@@ -32,6 +34,8 @@ class CreateQuestionsheetTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questionsheets');
+        Schema::table('survey_units', function (Blueprint $table) {
+            $table->dropForeign('survey_units_survey_id_foreign');
+        });
     }
 }

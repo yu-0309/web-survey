@@ -16,7 +16,8 @@ class QuestionsTableSeeder extends Seeder
         DB::table('questions')->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         DB::table('questions')->insert([ [
-            'questionsheet_id'=>'1',
+            'survey_id'=>'1',
+            'survey_unit_id'=>'1',
             'questioncontent'=>'性別',
             'answercontent1'=>'男性',
             'answercontent2'=>'女性',
@@ -34,7 +35,8 @@ class QuestionsTableSeeder extends Seeder
             'updated_at'=>Carbon::now()
         ]]);
         DB::table('questions')->insert([ [
-            'questionsheet_id'=>'1',
+            'survey_id'=>'1',
+            'survey_unit_id'=>'1',
             'questioncontent'=>'年齢',
             'answercontent1'=>'１０代',
             'answercontent2'=>'２０代',
@@ -52,7 +54,8 @@ class QuestionsTableSeeder extends Seeder
             'updated_at'=>Carbon::now()
         ]]);
         DB::table('questions')->insert([ [
-            'questionsheet_id'=>'1',
+            'survey_id'=>'1',
+            'survey_unit_id'=>'1',
             'questioncontent'=>'今回の支持候補者',
             'answercontent1'=>'',
             'answercontent2'=>'',
@@ -70,7 +73,8 @@ class QuestionsTableSeeder extends Seeder
             'updated_at'=>Carbon::now()
         ]]);
         DB::table('questions')->insert([ [
-            'questionsheet_id'=>'1',
+            'survey_id'=>'1',
+            'survey_unit_id'=>'1',
             'questioncontent'=>'今回の支持政党',
             'answercontent1'=>'自民',
             'answercontent2'=>'立憲民主',
@@ -88,7 +92,8 @@ class QuestionsTableSeeder extends Seeder
             'updated_at'=>Carbon::now()
         ]]);
         DB::table('questions')->insert([ [
-            'questionsheet_id'=>'1',
+            'survey_id'=>'1',
+            'survey_unit_id'=>'1',
             'questioncontent'=>'重視している政策・課題',
             'answercontent1'=>'景気・雇用対策',
             'answercontent2'=>'社会保障',
@@ -106,7 +111,8 @@ class QuestionsTableSeeder extends Seeder
             'updated_at'=>Carbon::now()
         ]]);
         DB::table('questions')->insert([ [
-            'questionsheet_id'=>'1',
+            'survey_id'=>'1',
+            'survey_unit_id'=>'1',
             'questioncontent'=>'前回の支持政党',
             'answercontent1'=>'自民',
             'answercontent2'=>'公明',
@@ -124,7 +130,8 @@ class QuestionsTableSeeder extends Seeder
             'updated_at'=>Carbon::now()
         ]]);
         DB::table('questions')->insert([ [
-            'questionsheet_id'=>'1',
+            'survey_id'=>'1',
+            'survey_unit_id'=>'1',
             'questioncontent'=>'普段の支持政党',
             'answercontent1'=>'自民',
             'answercontent2'=>'立憲民主',

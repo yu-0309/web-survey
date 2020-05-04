@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSurveyprefectureTable extends Migration
+class CreateTotalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateSurveyprefectureTable extends Migration
      */
     public function up()
     {
-        Schema::create('surveyprefectures', function (Blueprint $table) {
+        Schema::create('totals', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('survey_id')->unsigned()->index();
             $table->string('name');
             $table->timestamps();
-
-            //外部キー参照
-            $table->foreign('survey_id')->references('id')->on('surveys');
         });
     }
 
@@ -31,6 +27,6 @@ class CreateSurveyprefectureTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('surveyprefectures');
+        Schema::dropIfExists('totals');
     }
 }

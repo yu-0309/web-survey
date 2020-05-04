@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    {!! Form::open(['route' => 'questionsheets.store']) !!}
+    {!! Form::model($surveyunit, ['route' => ['surveyunits.update', $surveyunit->id], 'method' => 'put']) !!}
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-8">
                 <div class="card">
                     <div class="card-header alert-danger">
-                        アンケート情報　新規登録画面　（*は入力必須項目）
+                        調査ユニット　編集画面　（*は入力必須項目）
                     </div>
                     <div class="card-body">
                        <div class="row">
@@ -28,10 +28,10 @@
                         </div>
                        <div class="row">
                                 <div class="form-group col-5 text-right">
-                                    {!! Form::label('total_flag', '集計フラグ　') !!}
+                                    {!! Form::label('total_name', '集計フラグ　') !!}
                                 </div>
                                 <div class="form-group col-5">
-                                    {!! Form::select('total_flag', ['1' => 'なし','2' => 'あり']) !!}
+                                    {!! Form::select('total_id', $totals->pluck('name', 'id'), '', ['placeholder' => '選択してください　',], ['class' => 'form', 'id'=>'totals_id']) !!}
                                 </div>
                         </div>
                         <div class="row">
@@ -49,10 +49,9 @@
                                 </div>
                                 
                                 <div class="form-group col-5">
-                                    <a href='/questionsheets' class='btn btn-primary btm-sm form-control'>戻る</a>
+                                    <a href='/surveyunits' class='btn btn-primary btm-sm form-control'>戻る</a>
                                 </div>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>

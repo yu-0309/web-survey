@@ -4,41 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Survey;
-
-class SurveyPrefecturesController extends Controller
+class TotalController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request,$id)
+    public function index()
     {
-        $survey = Survey::find($id);
-        $surveyprefectures = $survey->surveyprefectures()->get();
-
-        return view('surveyprefectures.index', [
-            'surveyprefectures' => $surveyprefectures,
-            'survey' => $survey,
-        ]);
+        //
     }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request,$id)
+    public function create()
     {
-        $survey = Survey::find($id);
-        $surveyprefectures = $survey->surveyprefectures()->get();
-
-        return view('surveyprefectures.create',[
-            'surveyprefectures' => $surveyprefectures,
-            'survey' => $survey,
-        ]);
+        //
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -48,10 +34,7 @@ class SurveyPrefecturesController extends Controller
      */
     public function store(Request $request)
     {
-        $request->$survey->surveyprefectures()->create([
-            'name' => $request->name,
-        ]);        
-        return redirect('/surveyprefectures');
+        //
     }
 
     /**
@@ -62,6 +45,7 @@ class SurveyPrefecturesController extends Controller
      */
     public function show($id)
     {
+        //
     }
 
     /**

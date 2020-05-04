@@ -14,11 +14,12 @@ class DatabaseSeeder extends Seeder
         $this->call([
             SurveysTableSeeder::class,
             UserTableSeeder::class,
-            QuestionsheetsTableSeeder::class,
             RolesTableSeeder::class,
             TeamsTableSeeder::class,
             TermsTableSeeder::class,
             QuestionsTableSeeder::class,
+            TotalsTableSeeder::class,
+            SurveyUnitsTableSeeder::class,
         ]);
     }
 }

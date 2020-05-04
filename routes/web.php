@@ -31,19 +31,26 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
     Route::resource('surveys', 'SurveysController');
-    Route::resource('questionsheets', 'QuestionsheetsController');
+    //Route::resource('surveyunits', 'SurveyUnitsController');
+    
+    Route::group(['prefix' => 'surveys/{id}'], function () {
+        //Route::get('surveyunits', 'SurveyUnitsController@index1')->name('surveyunits.index1');
+        Route::resource('surveyunits', 'SurveyUnitsController');
+        Route::resource('questions', 'QuestionsController');
+        Route::resource('surveyprefectures', 'SurveyPrefecturesController');
+    });
+    
     Route::resource('answers', 'AnswersController');
     Route::resource('teams', 'TeamsController');
     Route::resource('maintenances', 'MaintenancesController');
     Route::resource('roles', 'RolesController');
     Route::resource('answers', 'AnswersController');
-    Route::resource('enterquestions', 'EnterQuestionsController');
+    Route::resource('answerquestions', 'AnswerQuestionsController');
     Route::resource('surveyusers', 'SurveyUsersController');
     Route::resource('questions', 'QuestionsController');
     Route::resource('results', 'ResultsController');
     Route::resource('surveyareas', 'SurveyAreasController');
     Route::resource('surveypoints', 'SurveyPointsController');
-    Route::resource('surveyprefectures', 'SurveyPrefecturesController');
     Route::resource('teams', 'TeamsController');
     Route::post('surveys/delete','SurveysController@delete')->name('surveys.delete');
 });

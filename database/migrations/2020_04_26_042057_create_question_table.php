@@ -15,7 +15,8 @@ class CreateQuestionTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('questionsheet_id')->unsigned()->index();
+            $table->integer('survey_id')->unsigned()->index();
+            $table->integer('survey_unit_id')->unsigned()->index();
             $table->string('questioncontent');
             $table->string('answercontent1');
             $table->string('answercontent2');

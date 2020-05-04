@@ -19,8 +19,9 @@
                 <th>担当</th>
                 <th>基準日</th>
 <!--            <th>作成日時</th>    -->
-<!--            <th>更新日時</th>    -->
-                <th>メモ</th>
+                <th>更新日時</th>    
+<!--                <th>メモ</th>    -->
+                <th>調査ユニット</th>
                 <th>アンケート</th>
                 <th>調査地点</th>
                 <th>調査担当者</th>
@@ -37,13 +38,17 @@
                 <td>{{ $survey->team->name }}</td>
                 <td>{{ $survey->reference_date }}</td>
 <!--            <td>{{ $survey->created_at }}</td>    -->
-<!--            <td>{{ $survey->updated_at }}</td>    -->
-                <td>{!! nl2br(e($survey->memo)) !!}</td>
+            <td>{{ $survey->updated_at }}</td>    
+<!--                <td>{!! nl2br(e($survey->memo)) !!}</td>    -->
                 <td>
-                    {!! link_to_route('questionsheets.index', '詳細', [], ['class' => 'btn btn-success btn-sm']) !!}<br><br>
+                    {!! link_to_route('surveyunits.index', '詳細', ['id' => $survey->id], ['class' => 'btn btn-success btn-sm']) !!}<br><br>
                 </td>
                 <td>
-                    {!! link_to_route('surveyprefectures.index', '設定', [], ['class' => 'btn btn-success btn-sm']) !!}<br><br>
+                    {!! link_to_route('questions.index', '詳細', ['id' => $survey->id], ['class' => 'btn btn-success btn-sm']) !!}<br><br>
+                </td>
+               
+                <td>
+                    {!! link_to_route('surveyprefectures.index', '設定', ['id' => $survey->id], ['class' => 'btn btn-success btn-sm']) !!}<br><br>
                 </td>
                 <td>
                     {!! link_to_route('surveyusers.index', '設定', [], ['class' => 'btn btn-success btn-sm']) !!}<br><br>

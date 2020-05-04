@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\User;
 use App\Survey;
-use App\Questionsheet;
+use App\SurveyUnit;
 use App\Question;
 use App\Term;
 
@@ -17,12 +17,14 @@ class QuestionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request,$id)
     {
-        $questions = Question::all();
+        $survey = Survey::find($id);
+        $questions = $survey->questions()->get();
 
         return view('questions.index', [
             'questions' => $questions,
+            'survey' => $survey,
         ]);
     }
 

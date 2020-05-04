@@ -6,21 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-    protected $fillable = ['questionsheet_id','questioncontent','answercontent1','answercontent2','answercontent3','answercontent4','answercontent5','answercontent6','answercontent7','answercontent8','answercontent9','answercontent10','answercontent11','answercontent12'];
+    protected $fillable = ['survey_id','surveyunit_id','questioncontent','answercontent1','answercontent2','answercontent3','answercontent4','answercontent5','answercontent6','answercontent7','answercontent8','answercontent9','answercontent10','answercontent11','answercontent12'];
 
-    public function questionsheet()
+    public function survey()
     {
-        return $this->belongsTo(Questionsheet::class);
+        return $this->belongsTo(Survey::class);
     }
 
-    public function answers()
+    public function surveyunits()
     {
-        return $this->hasMany(Answer::class);
+        return $this->hasMany(SurveyUnit::class);
     }
 
-    public function results()
+    public function answerquestions()
     {
-        return $this->hasMany(Result::class);
+        return $this->hasMany(AnswerQuestion::class);
     }
-
 }

@@ -4,6 +4,8 @@
 
 <div class='justify-content-around'>
     {!! link_to_route('questionsheets.index', '戻る', [], ['class' => 'btn btn-success']) !!}
+    {!! link_to_route('questions.create', '項目追加', ['id' => $survey->id], ['class' => 'btn btn-success']) !!}
+
     {!! link_to_route('questions.create', '項目追加', [], ['class' => 'btn btn-success']) !!}
 </div><br>
 
@@ -48,9 +50,10 @@
                     <td>{{ $question->answercontent10 }}</td>
                     <td>{{ $question->answercontent11}}</td>
                     <td>{{ $question->answercontent12 }}</td>
-                <td>
-                    {!! link_to_route('questions.edit', '修正', ['id' => $question->id], ['class' => 'btn btn-primary btn-sm']) !!}
-                </td>
+                    <td>
+                        {!! link_to_route('questions.edit', '修正', ['question' => $question->id,'id' => $survey->id], ['class' => 'btn btn-primary btn-sm']) !!}
+                    </td>
+
                 <td>
                     {!! Form::model($question, ['route' => ['questions.destroy', $question->id], 'method' => 'delete']) !!}
                     {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}

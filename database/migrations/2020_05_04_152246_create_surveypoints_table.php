@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSurveypointTable extends Migration
+class CreateSurveypointsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateSurveypointTable extends Migration
      */
     public function up()
     {
-        Schema::create('surveypoints', function (Blueprint $table) {
+        Schema::create('survey_points', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('surveyarea_id')->unsigned()->index();
+            $table->integer('survey_area_id')->unsigned()->index();
             $table->string('name');
             $table->string('address');
             $table->timestamps();
-            
-            //外部キー参照
-            $table->foreign('surveyarea_id')->references('id')->on('surveyareas');
+
+            //外部キー制約
+            $table->foreign('survey_area_id')->references('id')->on('survey_areas')->onDelete('cascade');
         });
     }
 
@@ -32,6 +32,8 @@ class CreateSurveypointTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('surveypoints');
+        Schema::table('surveys_points', function (Blueprint $table) {
+            $table->dropForeign('survey_points_survey_area_id_foreign');
+        });
     }
 }

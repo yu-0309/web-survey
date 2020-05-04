@@ -7,7 +7,7 @@
 
             <!-- 調査するへのリンク -->
             {!! link_to_route('surveys.index', '　アンケートを設定する　', [], ['class' => 'btn btn-success btn-lg']) !!}<br><br>
-            {!! link_to_route('questionsheets.index', '　アンケートを回答する　', [], ['class' => 'btn btn-success btn-lg']) !!}<br><br>
+            {!! link_to_route('surveyunits.index', '　アンケートに回答する　', ['id' => 1], ['class' => 'btn btn-success btn-lg']) !!}<br><br>
             {!! link_to_route('answers.index','　アンケートを集計する　', [], ['class' => 'btn btn-success btn-lg']) !!}<br><br>
             {!! link_to_route('maintenances.index', '　　　　各種設定　　　　', [], ['class' => 'btn btn-success btn-lg']) !!}
 
