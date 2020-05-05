@@ -39,10 +39,11 @@ class CreateSurveyusersTable extends Migration
      */
     public function down()
     {
-        Schema::table('survey_users', function (Blueprint $table) {
-            $table->dropForeign('survey_users_survey_id_foreign');
-            $table->dropForeign('survey_users_survey_area_id_foreign');
-            $table->dropForeign('survey_users_role_id_foreign');
-        });
+        Schema::dropIfExists('survey_users');
+//        Schema::table('survey_users', function (Blueprint $table) {
+//            $table->dropForeign('survey_users_survey_id_foreign');
+//            $table->dropForeign('survey_users_survey_area_id_foreign');
+//            $table->dropForeign('survey_users_role_id_foreign');
+//        });
     }
 }

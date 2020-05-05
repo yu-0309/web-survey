@@ -31,8 +31,9 @@ class CreateSurveyareasTable extends Migration
      */
     public function down()
     {
-        Schema::table('survey_areas', function (Blueprint $table) {
-            $table->dropForeign('survey_areas_survey_prefecture_id_foreign');
-        });
+        Schema::dropIfExists('survey_areas');
+//        Schema::table('survey_areas', function (Blueprint $table) {
+//            $table->dropForeign('survey_areas_survey_prefecture_id_foreign');
+//        });
     }
 }

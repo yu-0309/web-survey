@@ -34,8 +34,9 @@ class CreateSurveyunitsTable extends Migration
      */
     public function down()
     {
-        Schema::table('survey_units', function (Blueprint $table) {
-            $table->dropForeign('survey_units_survey_id_foreign');
-        });
+        Schema::dropIfExists('survey_units');
+//        Schema::table('survey_units', function (Blueprint $table) {
+//            $table->dropForeign('survey_units_survey_id_foreign');
+//        });
     }
 }

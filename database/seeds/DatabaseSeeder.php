@@ -20,6 +20,9 @@ class DatabaseSeeder extends Seeder
             QuestionsTableSeeder::class,
             TotalsTableSeeder::class,
             SurveyUnitsTableSeeder::class,
+            SurveyPrefecturesTableSeeder::class,
+            SurveyAreasTableSeeder::class,
+            SurveyPointsTableSeeder::class,
         ]);
     }
 }

@@ -32,8 +32,9 @@ class CreateSurveypointsTable extends Migration
      */
     public function down()
     {
-        Schema::table('surveys_points', function (Blueprint $table) {
-            $table->dropForeign('survey_points_survey_area_id_foreign');
-        });
+        Schema::dropIfExists('survey_points');
+//        Schema::table('survey_points', function (Blueprint $table) {
+//            $table->dropForeign('survey_points_survey_area_id_foreign');
+//        });
     }
 }

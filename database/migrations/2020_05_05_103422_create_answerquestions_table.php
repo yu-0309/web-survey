@@ -34,10 +34,11 @@ class CreateAnswerquestionsTable extends Migration
      */
     public function down()
     {
-        Schema::table('answer_questions', function (Blueprint $table) {
-            $table->dropForeign('answer_questions_survey_user_id_foreign');
-            $table->dropForeign('answer_questions_survey_unit_id_foreign');
-            $table->dropForeign('answer_questions_question_id_foreign');
-        });
+        Schema::dropIfExists('answer_questions');
+//        Schema::table('answer_questions', function (Blueprint $table) {
+//            $table->dropForeign('answer_questions_survey_user_id_foreign');
+//            $table->dropForeign('answer_questions_survey_unit_id_foreign');
+//            $table->dropForeign('answer_questions_question_id_foreign');
+//        });
     }
 }
