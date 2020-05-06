@@ -23,8 +23,8 @@ class QuestionsController extends Controller
         $questions = $survey->questions()->get();
 
         return view('questions.index', [
-            'questions' => $questions,
             'survey' => $survey,
+            'questions' => $questions,
         ]);
     }
 

@@ -2,9 +2,8 @@
 
 @section('content')
 
-
 <div class='justify-content-around'>
-    {!! link_to_route('surveys.index', '戻る', [], ['class' => 'btn btn-success']) !!}
+    {!! link_to_route('surveys.index', '調査情報一覧に戻る', [], ['class' => 'btn btn-success']) !!}
 </div><br>
 
 <div class="form-group col-5 justify-content-around">
@@ -28,7 +27,7 @@
                     <th scope=”col”>都道府県</th>
                     <th scope=”col”>作成日時</th>
                     <th scope=”col”>更新日時</th>
-                    <th>修正</th>
+                    <th>調査エリア</th>
                     <th>削除</th>
                 </tr>
             </thead>
@@ -40,7 +39,7 @@
                     <td>{{ $surveyprefecture->created_at }}</td>
                     <td>{{ $surveyprefecture->updated_at }}</td>
                     <td>
-                        {!! link_to_route('surveyprefectures.edit', '修正', ['surveyprefecture' => $surveyprefecture->id,'id' => $survey->id], ['class' => 'btn btn-primary btn-sm']) !!}
+                        {!! link_to_route('surveyareas.index', '設定', ['surveyid' => $survey->id,'surveyprefectureid' => $surveyprefecture->id], ['class' => 'btn btn-primary btn-sm']) !!}
                     </td>
                     <td>
                         {!! Form::model($surveyprefecture, ['route' => ['surveyprefectures.destroy', $surveyprefecture->id,$survey->id], 'method' => 'delete']) !!}

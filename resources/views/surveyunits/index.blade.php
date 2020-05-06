@@ -4,19 +4,16 @@
 
 <div class='justify-content-around'>
     {!! link_to_route('surveys.index', '戻る', [], ['class' => 'btn btn-success']) !!}
-
     {!! link_to_route('surveyunits.create', '調査の新規作成', ['id' => $survey->id], ['class' => 'btn btn-success']) !!}
-
-    {!! link_to_route('questions.index', 'アンケートの設定', [], ['class' => 'btn btn-success']) !!}
 </div><br>
 
 <li class="media mb-4">
     <div class="media-body">
-        <h2>調査ユニット一覧</h2>
+        <h2> {{$survey->name}}　調査ユニット一覧</h2>
             <table class="table table-striped table-bordered text-center">
             <thead>
                 <tr class=”table-info”>
-                    <th scope=”col”>調査ID</th>
+                    <th scope=”col”>ID</th>
                     <th scope=”col”>調査情報</th>
                     <th scope=”col”>調査日</th>
                     <th scope=”col”>ターム</th>

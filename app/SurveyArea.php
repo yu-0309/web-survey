@@ -13,9 +13,9 @@ class SurveyArea extends Model
         return $this->belongsTo(SurveyPrefecture::class);
     }
 
-    public function surveyusers()
+    public function surveyuser()
     {
-        return $this->hasMany(SurveyUser::class);
+        return $this->belongsTo(SurveyUser::class);
     }
 
     public function surveypoints()

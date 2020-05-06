@@ -3,15 +3,16 @@
 @section('content')
 
 <div class='justify-content-around'>
-    {!! link_to_route('questionsheets.index', '戻る', [], ['class' => 'btn btn-success']) !!}
-    {!! link_to_route('questions.create', '項目追加', ['id' => $survey->id], ['class' => 'btn btn-success']) !!}
+    {!! link_to_route('surveys.index', '調査情報一覧画面に戻る', [], ['class' => 'btn btn-success']) !!}
+</div><br>
 
-    {!! link_to_route('questions.create', '項目追加', [], ['class' => 'btn btn-success']) !!}
+<div>
+    ここにアンケート項目追加ボタンを入れる
 </div><br>
 
 <li class="media mb-4">
     <div class="media-body">
-        <h2>アンケート項目</h2><br>
+        <h2> {{$survey->name}}　アンケート項目</h2><br>
             <table class="table table-striped table-bordered text-center">
             <thead>
                 <tr class=”table-info”>
@@ -50,15 +51,8 @@
                     <td>{{ $question->answercontent10 }}</td>
                     <td>{{ $question->answercontent11}}</td>
                     <td>{{ $question->answercontent12 }}</td>
-                    <td>
-                        {!! link_to_route('questions.edit', '修正', ['question' => $question->id,'id' => $survey->id], ['class' => 'btn btn-primary btn-sm']) !!}
-                    </td>
-
-                <td>
-                    {!! Form::model($question, ['route' => ['questions.destroy', $question->id], 'method' => 'delete']) !!}
-                    {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}
-                    {!! Form::close() !!}
-                </td>                    
+                    <td>修正</td>
+                    <td>削除</td>
                 </tr>
             @endforeach
             </tbody>

@@ -18,8 +18,8 @@ class SurveyPrefecturesTableSeeder extends Seeder
         
         $surveyprefectures = [
             ['survey_id' => '1','name' => '北海道','created_at'=>Carbon::now(),'updated_at'=>Carbon::now()],
-            ['survey_id' => '2','name' => '東京','created_at'=>Carbon::now(),'updated_at'=>Carbon::now()],
-            ['survey_id' => '3','name' => '熊本','created_at'=>Carbon::now(),'updated_at'=>Carbon::now()],
+            ['survey_id' => '2','name' => '東京都','created_at'=>Carbon::now(),'updated_at'=>Carbon::now()],
+            ['survey_id' => '3','name' => '熊本県','created_at'=>Carbon::now(),'updated_at'=>Carbon::now()],
         ];
 
         DB::table('survey_prefectures')->insert($surveyprefectures);

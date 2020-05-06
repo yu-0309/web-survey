@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\User;
+use App\Survey;
+use App\SurveyUnit;
+use App\Question;
+use App\Term;
+
 class SurveyUsersController extends Controller
 {
     /**
@@ -11,9 +17,15 @@ class SurveyUsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request,$id)
     {
-        //
+        $survey = Survey::find($id);
+        $surveyusers = $survey->surveyusers()->get();
+
+        return view('surveyusers.index', [
+            'survey' => $survey,
+            'surveyusers' => $surveyusers,
+        ]);
     }
 
     /**

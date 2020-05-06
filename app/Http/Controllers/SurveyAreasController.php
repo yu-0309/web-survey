@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\User;
+use App\Survey;
+use App\SurveyPrefecture;
+use App\Term;
+use App\Total;
+
 class SurveyAreasController extends Controller
 {
     /**
@@ -11,9 +17,19 @@ class SurveyAreasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request,$surveyid,$surveyprefectureid)
     {
-        //
+        $survey = Survey::find($surveyid);
+        $surveyprefectures = $survey->surveyprefectures()->get();
+        
+        $surveyprefecture = SurveyPrefecture::find($surveyprefectureid);
+        $surveyareas = $surveyprefecture->surveyareas()->get();
+
+        return view('surveyareas.index', [
+            'surveys' => $survey,
+            'surveyprefectures' => $surveyprefectures,
+            'surveyareas' => $surveyareas,
+        ]);
     }
 
     /**

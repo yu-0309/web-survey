@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    {!! Form::open(['route' => 'surveyunits.store']) !!}
+{!! Form::open(['route' => 'surveyunits.store']) !!}
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-8">
                 <div class="card">
                     <div class="card-header alert-danger">
-                        アンケート情報　新規登録画面　（*は入力必須項目）
+                        {{$survey->name}}アンケート情報　新規登録画面　（*は入力必須項目）
                     </div>
                     <div class="card-body">
                        <div class="row">
@@ -45,8 +45,7 @@
                         
                         <div class = "row">
                                 <div class="form-group col-5">
-                                    {!! link_to_route('surveyunits.store', '登録', ['surveyunit' => $surveyunit->id,'id' => $survey->id], ['class' => 'btn btn-primary btn-sm']) !!}
-<!--                                    {!! Form::submit('登録', ['class' => 'btn btn-primary btn-sm form-control']) !!} -->
+                                    {!! Form::submit('登録する', ['class' => 'btn btn-primary btn-sm']) !!}
                                 </div>
                                 
                                 <div class="form-group col-5">

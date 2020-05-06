@@ -11,9 +11,24 @@ class SurveyPointsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request,$surveyid,$surveyprefectureid,$surveyareaid)
     {
-        //
+        $survey = Survey::find($surveyid);
+        $surveyprefectures = $survey->surveyprefectures()->get();
+        
+        $surveyprefecture = SurveyPrefecture::find($surveyprefectureid);
+        $surveyareas = $surveyprefecture->surveyareas()->get();
+
+        $surveyarea = SurveyArea::find($surveyareaid);
+        $surveypoints = $surveyarea->surveypoints()->get();
+
+
+        return view('surveyareas.index', [
+            'surveys' => $survey,
+            'surveyprefectures' => $surveyprefectures,
+            'surveyareas' => $surveyareas,
+            'surveypoints' => $surveypoints,
+        ]);
     }
 
     /**

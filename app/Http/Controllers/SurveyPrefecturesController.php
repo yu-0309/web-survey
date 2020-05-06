@@ -19,8 +19,8 @@ class SurveyPrefecturesController extends Controller
         $surveyprefectures = $survey->surveyprefectures()->get();
 
         return view('surveyprefectures.index', [
-            'surveyprefectures' => $surveyprefectures,
             'survey' => $survey,
+            'surveyprefectures' => $surveyprefectures,
         ]);
     }
     /**

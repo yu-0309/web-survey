@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             SurveyPrefecturesTableSeeder::class,
             SurveyAreasTableSeeder::class,
             SurveyPointsTableSeeder::class,
+            SurveyUsersTableSeeder::class,
         ]);
     }
 }

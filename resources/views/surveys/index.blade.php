@@ -38,20 +38,19 @@
                 <td>{{ $survey->team->name }}</td>
                 <td>{{ $survey->reference_date }}</td>
 <!--            <td>{{ $survey->created_at }}</td>    -->
-            <td>{{ $survey->updated_at }}</td>    
-<!--                <td>{!! nl2br(e($survey->memo)) !!}</td>    -->
+                <td>{{ $survey->updated_at }}</td>    
+<!--            <td>{!! nl2br(e($survey->memo)) !!}</td>    -->
                 <td>
                     {!! link_to_route('surveyunits.index', '詳細', ['id' => $survey->id], ['class' => 'btn btn-success btn-sm']) !!}<br><br>
                 </td>
                 <td>
                     {!! link_to_route('questions.index', '詳細', ['id' => $survey->id], ['class' => 'btn btn-success btn-sm']) !!}<br><br>
                 </td>
-               
                 <td>
                     {!! link_to_route('surveyprefectures.index', '設定', ['id' => $survey->id], ['class' => 'btn btn-success btn-sm']) !!}<br><br>
                 </td>
                 <td>
-                    {!! link_to_route('surveyusers.index', '設定', [], ['class' => 'btn btn-success btn-sm']) !!}<br><br>
+                    {!! link_to_route('surveyusers.index', '設定', ['id' => $survey->id], ['class' => 'btn btn-success btn-sm']) !!}<br><br>
                 </td>
                 <td>
                     {!! link_to_route('surveys.edit', '修正', ['id' => $survey->id], ['class' => 'btn btn-primary btn-sm']) !!}
