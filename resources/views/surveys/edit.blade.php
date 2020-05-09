@@ -48,9 +48,9 @@
                                     {!! Form::submit('更新する', ['class' => 'btn btn-primary btn-sm form-control']) !!}
                                 </div>
                                 
-                                <div class="form-group col-5">
-                                    <a href='/surveys' class='btn btn-primary btm-sm form-control'>戻る</a>
-                                </div>
+                            <div class="form-group col-5">
+                                <button type="button" class='btn btn-success btm-sm form-control' onclick="history.back()">戻る</button>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -23,7 +23,7 @@
             <table class="table table-striped table-bordered text-center">
             <thead>
                 <tr class=”table-info”>
-                    <th scope=”col”>ID</th>
+                    <th scope=”col”>No</th>
                     <th scope=”col”>都道府県</th>
                     <th scope=”col”>作成日時</th>
                     <th scope=”col”>更新日時</th>
@@ -32,17 +32,17 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach ($surveyprefectures as $surveyprefecture)
+            @foreach ($surveyprefectures as $key=> $surveyprefecture)
                 <tr>
-                    <td>{{ $surveyprefecture->id}}</td>
+                    <td>{{ $key=$key+1 }}</td>
                     <td>{{ $surveyprefecture->name }}</td>
                     <td>{{ $surveyprefecture->created_at }}</td>
                     <td>{{ $surveyprefecture->updated_at }}</td>
                     <td>
-                        {!! link_to_route('surveyareas.index', '設定', ['surveyid' => $survey->id,'surveyprefectureid' => $surveyprefecture->id], ['class' => 'btn btn-primary btn-sm']) !!}
+                        {!! link_to_route('surveyareas.index', '設定', ['id' => $survey->id,'surveyprefectureid' => $surveyprefecture->id], ['class' => 'btn btn-primary btn-sm']) !!}
                     </td>
                     <td>
-                        {!! Form::model($surveyprefecture, ['route' => ['surveyprefectures.destroy', $surveyprefecture->id,$survey->id], 'method' => 'delete']) !!}
+                        {!! Form::model($surveyprefecture, ['route' => ['surveyprefectures.destroy','surveyprefectureid' => $surveyprefecture->id,'id' => $survey->id], 'method' => 'delete']) !!}
                         {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}
                         {!! Form::close() !!}
                     </td>
@@ -50,6 +50,9 @@
             @endforeach
             </tbody>
         </table>
+        @if (empty($surveyprefecture->id))
+        <h4>まだデータは１件も登録されてません</h4>
+        @endif
     </div>
 </div>
 @endsection

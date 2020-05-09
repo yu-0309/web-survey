@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\User;
 use App\Survey;
+use App\SurveyUnit;
 use App\Term;
 use App\Total;
 
@@ -19,12 +20,18 @@ class SurveyUnitsController extends Controller
     public function index(Request $request,$id)
     {
         $survey = Survey::find($id);
+
+//      if (\Auth::id() === $survey->user_id) { //これを外せばだれでも一覧が見える
         $surveyunits = $survey->surveyunits()->get();
 
         return view('surveyunits.index', [
             'surveyunits' => $surveyunits,
             'survey' => $survey,
         ]);
+
+//      }                                       //これを外せばだれでも一覧が見える
+        return redirect('/surveys');
+
     }
 
     /**
@@ -32,20 +39,19 @@ class SurveyUnitsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request,$id)
+    public function create($id)
     {
+        $survey = Survey::find($id);
         $terms = Term::all();
         $totals = Total::all();
-
-        $survey = Survey::find($id);
-        $surveyunits = $survey->surveyunits()->get();
-
-        return view('surveyunits.create',[
-            'surveyunits' => $surveyunits,
+        
+        $data = [
             'survey' => $survey,
             'terms' => $terms,
             'totals' => $totals,
-        ]);
+        ];
+
+        return view('surveyunits.create',$data);
     }
 
     /**
@@ -56,17 +62,23 @@ class SurveyUnitsController extends Controller
      */
     public function store(Request $request,$id)
     {
-        $terms = Term::all();
-        $totals = Total::all();
-
         $survey = Survey::find($id);
+        $surveyunit = $survey->surveyunits()->get();
 
-        $request->$survey->surveyunits()->create([
+        $this->validate($request, [
+            'survey_date' => 'required|max:8',
+            'term_id' => 'required|max:5',
+            'total_id' => 'required|max:5',
+            'memo' => 'max:30',
+        ]);
+
+        $request->survey()->surveyunits()->create([
             'survey_date' => $request->survey_date,
             'term_id' => $request->term_id,
             'total_id' => $request->total_id,
             'memo' => $request->memo,
-        ]);        
+        ]);
+        
         return redirect('/surveyunits');
     }
 
@@ -135,12 +147,10 @@ class SurveyUnitsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,$surveyunitid)
     {
-        $surveyunit = SurveyUnit::find($id);
+        SurveyUnit::find($surveyunitid)->delete();
 
-        $surveyunit->delete();
-
-        return redirect('/surveyunits');
+        return back();
     }
 }

@@ -1,0 +1,50 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="text-center">
+        <h2>{{$survey->name}}　調査担当者</h2><br>
+        <h3>新規登録画面（*は入力必須項目）</h3><br>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+
+            {!! Form::model( ['route' => 'surveyusers.store']) !!}
+                <div class="form-group">
+                    {!! Form::label('role_id', '権限　') !!}
+                    {!! Form::select('role_id', ['1' => '管理者','2' => '一般','3' => 'ゲスト']) !!}
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('name', 'ユーザ名') !!}
+                    {!! Form::text('name', old('name'), ['placeholder' => '読売　太郎','class' => 'form-control']) !!}
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('password', 'パスワード') !!}
+                    {!! Form::password('password', ['class' => 'form-control']) !!}
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('password_confirmation', 'パスワード（再確認）') !!}
+                    {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('tel', '電話番号') !!}
+                    {!! Form::text('tel', old('tel') , ['placeholder' => '09012345678','class' => 'form-control']) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label('email', 'メールアドレス') !!}
+                    {!! Form::email('email', old('email'), ['placeholder' => 'example@abc.com','class' => 'form-control']) !!}
+                </div><br>
+                
+                {!! Form::submit('登録する', ['class' => 'btn btn-success btn-block']) !!}
+            
+                <br><button type="button" class='btn btn-success btn-block' onclick="history.back()">戻る</button>
+            {!! Form::close() !!}
+        </div>
+    </div>
+
+
+@endsection

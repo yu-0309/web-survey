@@ -4,7 +4,7 @@
 
 <div class='justify-content-around'>
     <a href='surveys/create' class='btn btn-success'>　新規作成　</a>
-    <a href='/' class='btn btn-success'>トップページへ戻る</a>
+    <a href='/' class='btn btn-success'> トップページへ戻る </a>
 </div><br>
 
 <li class="media mb-4">
@@ -13,7 +13,7 @@
             <table class="table table-striped table-responsive table-bordered text-center">
             <thead>
             <tr>
-<!--            <th>項番</th>    -->
+                <th>No</th>
 <!--            <th>選択</th>    -->
                 <th>調査名</th>
                 <th>担当</th>
@@ -32,7 +32,7 @@
             <tbody>
                 @foreach($surveys as $survey)
             <tr>
-<!--            <td>{{ $survey->id }}</td>    -->
+                <td>{{ $survey->id }}</td>
 <!--            <td><input type="checkbox" name="ids[]" value="{{$survey->id }}"></td>    -->
                 <td>{{ $survey->name }}</td>
                 <td>{{ $survey->team->name }}</td>
@@ -64,6 +64,11 @@
             @endforeach
         </tbody>
     </table>
+
+    @if (empty($survey->id))
+    <h4>まだデータは１件も登録されてません</h4>
+    @endif
+
 </div>
 </li>
 @endsection

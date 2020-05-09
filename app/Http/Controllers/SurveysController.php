@@ -18,16 +18,14 @@ class SurveysController extends Controller
         ]);
     }
     
-    public function create()
-    {
+    public function create(){
         $teams = Team::all();
 
         return view('surveys.create',[
-            'teams' => $teams,
+            'teams' => $teams
         ]);
     }
-    
-    
+
     public function store(Request $request)
     {
         $this->validate($request, [

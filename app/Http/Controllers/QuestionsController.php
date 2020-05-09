@@ -20,12 +20,17 @@ class QuestionsController extends Controller
     public function index(Request $request,$id)
     {
         $survey = Survey::find($id);
-        $questions = $survey->questions()->get();
+//      if (\Auth::id() === $survey->user_id) { //これを外せばだれでもアンケートが見える
+        $questions = optional($survey)->questions;
 
         return view('questions.index', [
             'survey' => $survey,
             'questions' => $questions,
         ]);
+
+//      }                                       //これを外せばだれでもアンケートが見える
+        return redirect('/surveys');
+
     }
 
     /**
@@ -33,9 +38,15 @@ class QuestionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('questions.create');
+        $survey = Survey::find($id);
+
+        $data = [
+            'survey' => $survey,
+        ];
+
+        return view('questions.create',$data);
     }
 
     /**
@@ -62,7 +73,7 @@ class QuestionsController extends Controller
             'answercontent12' => 'max:30',
         ]);
 
-        $request->user()->questions()->create([
+        $request-survey()->questions()->create([
             'questioncontent' => $request->questioncontent,
             'answercontent1' => $request->answercontent1,
             'answercontent2' => $request->answercontent2,
@@ -78,7 +89,7 @@ class QuestionsController extends Controller
             'answercontent12' => $request->answercontent12,
         ]);
 
-        return redirect('/questions');
+        return back();
     }
 
     /**
@@ -98,9 +109,9 @@ class QuestionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id,$questionid)
     {
-        $question = Question::find($id);
+        $question = Question::find($questionid);
         
          return view('questions.edit',[
              'question' => $question,
@@ -160,12 +171,10 @@ class QuestionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,$questionid)
     {
-        $question = Question::find($id);
+        Question::find($questionid)->delete();
 
-        $question->delete();
-
-        return redirect('/questions');
+        return back();
     }
 }

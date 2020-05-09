@@ -3,11 +3,8 @@
 @section('content')
 
 <div class='justify-content-around'>
-    {!! link_to_route('surveys.index', '調査情報一覧画面に戻る', [], ['class' => 'btn btn-success']) !!}
-</div><br>
-
-<div>
-    ここにアンケート項目追加ボタンを入れる
+    {!! link_to_route('surveys.index', '調査情報一覧に戻る', [], ['class' => 'btn btn-success']) !!}
+    {!! link_to_route('questions.create', 'アンケート項目の追加', ['id' => $survey->id], ['class' => 'btn btn-success']) !!}
 </div><br>
 
 <li class="media mb-4">
@@ -16,7 +13,7 @@
             <table class="table table-striped table-bordered text-center">
             <thead>
                 <tr class=”table-info”>
-                    <th class="col-ms-1">質問ID</th>
+                    <th class="col-ms-1">No</th>
                     <th scope=”col”>質問項目</th>
                     <th scope=”col”>選択肢１</th>
                     <th scope=”col”>選択肢２</th>
@@ -35,9 +32,9 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach ($questions as $question)
+            @foreach ($questions as $key => $question)
                 <tr>
-                    <td>{{ $question->id }}</td>
+                    <td>{{ $key=$key+1 }}</td>
                     <td>{{ $question->questioncontent }}</td>
                     <td>{{ $question->answercontent1 }}</td>
                     <td>{{ $question->answercontent2 }}</td>
@@ -51,12 +48,23 @@
                     <td>{{ $question->answercontent10 }}</td>
                     <td>{{ $question->answercontent11}}</td>
                     <td>{{ $question->answercontent12 }}</td>
-                    <td>修正</td>
-                    <td>削除</td>
+                    <td>
+                        {!! link_to_route('questions.edit', '修正', ['questionid' => $question->id,'id' => $survey->id], ['class' => 'btn btn-primary btn-sm']) !!}
+                    </td>
+                    <td>
+                        {!! Form::model($question, ['route' => ['questions.destroy', 'questionid' => $question->id,'id' => $survey->id], 'method' => 'delete']) !!}
+                        {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}
+                        {!! Form::close() !!}
+                    </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
+
+        @if (empty($question->id))
+        <h4>まだデータは１件も登録されてません</h4>
+        @endif
+
     </div>
 </div>
 @endsection

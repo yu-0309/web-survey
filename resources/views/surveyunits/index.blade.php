@@ -3,8 +3,8 @@
 @section('content')
 
 <div class='justify-content-around'>
-    {!! link_to_route('surveys.index', '戻る', [], ['class' => 'btn btn-success']) !!}
-    {!! link_to_route('surveyunits.create', '調査の新規作成', ['id' => $survey->id], ['class' => 'btn btn-success']) !!}
+    {!! link_to_route('surveys.index', '調査情報一覧に戻る', [], ['class' => 'btn btn-success']) !!}
+    {!! link_to_route('surveyunits.create', '調査ユニットの新規作成', ['id' => $survey->id], ['class' => 'btn btn-success']) !!}
 </div><br>
 
 <li class="media mb-4">
@@ -13,7 +13,7 @@
             <table class="table table-striped table-bordered text-center">
             <thead>
                 <tr class=”table-info”>
-                    <th scope=”col”>ID</th>
+                    <th scope=”col”>No</th>
                     <th scope=”col”>調査情報</th>
                     <th scope=”col”>調査日</th>
                     <th scope=”col”>ターム</th>
@@ -27,9 +27,9 @@
             </thead>
             
             <tbody>
-            @foreach ($surveyunits as $surveyunit)
+            @foreach ($surveyunits as $key => $surveyunit)
                 <tr>
-                    <td>{{ $surveyunit->id}}</td>
+                    <td>{{ $key=$key+1 }}</td>
                     <td>{{ $surveyunit->survey->name}}</td>
                     <td>{{ $surveyunit->survey_date }}</td>
                     <td>{{ $surveyunit->term->name }}</td>
@@ -38,10 +38,10 @@
                     <td>{{ $surveyunit->created_at }}</td>
                     <td>{{ $surveyunit->updated_at }}</td>
                     <td>
-                        {!! link_to_route('surveyunits.edit', '修正', ['surveyunit' => $surveyunit->id,'id' => $survey->id], ['class' => 'btn btn-primary btn-sm']) !!}
+                        {!! link_to_route('surveyunits.edit', '修正', ['surveyunitid' => $surveyunit->id,'id' => $survey->id], ['class' => 'btn btn-primary btn-sm']) !!}
                     </td>
                     <td>
-                        {!! Form::model($surveyunit, ['route' => ['surveyunits.destroy', $surveyunit->id,$survey->id], 'method' => 'delete']) !!}
+                        {!! Form::model($surveyunit, ['route' => ['surveyunits.destroy', 'surveyunitid' => $surveyunit->id,'id' => $survey->id], 'method' => 'delete']) !!}
                         {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}
                         {!! Form::close() !!}
                     </td>

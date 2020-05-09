@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Survey;
+use App\SurveyPrefecture;
 
 class SurveyPrefecturesController extends Controller
 {
@@ -16,12 +17,18 @@ class SurveyPrefecturesController extends Controller
     public function index(Request $request,$id)
     {
         $survey = Survey::find($id);
+
+//      if (\Auth::id() === $survey->user_id) { //これを外せばだれでも地点設定が見える
         $surveyprefectures = $survey->surveyprefectures()->get();
 
         return view('surveyprefectures.index', [
             'survey' => $survey,
             'surveyprefectures' => $surveyprefectures,
         ]);
+
+//      }                                       //これを外せばだれでも地点設定が見える
+        return redirect('/surveys');
+
     }
     /**
      * Show the form for creating a new resource.
@@ -93,8 +100,10 @@ class SurveyPrefecturesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,$surveyprefectureid)
     {
-        //
+        SurveyPrefecture::find($surveyprefectureid)->delete();
+
+        return back();
     }
 }
